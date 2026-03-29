@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weeraratne-Ricks Transplant Allocation Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 25px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            padding: 6px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .score-box {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Weeraratne-Ricks Transplant Allocation Calculator</h1>
+
+    <form method="POST">
+
+        <div>
+            <label for="A">Age (A)</label>
+            <input type="number" step="0.1" name="A" id="A" required>
+        </div>
+
+        <div>
+            <label for="D">Number of Dependents (D)</label>
+            <input type="number" step="1" name="D" id="D" required>
+        </div>
+
+        <div>
+            <label for="a">Mean Age of Dependents (a)</label>
+            <input type="number" step="0.1" name="a" id="a" value="0">
+        </div>
+
+        <div>
+            <label for="S">Success Probability (S, 0–100)</label>
+            <input type="number" step="0.1" name="S" id="S" required>
+        </div>
+
+        <div>
+            <label for="S_prev">Previous Success Probability (S′, 0–100)</label>
+            <input type="number" step="0.1" name="S_prev" id="S_prev" value="0">
+        </div>
+
+        <div>
+            <label for="n">Number of Previous Transplants (n)</label>
+            <input type="number" step="1" name="n" id="n" value="0">
+        </div>
+
+        <div>
+            <label for="R">Lifestyle Risk (R, 0–20)</label>
+            <input type="number" step="0.1" name="R" id="R" value="0">
+        </div>
+
+        <div>
+            <label for="Q">Quality of Life After Transplant (Q, 0.0–1.0)</label>
+            <input type="number" step="0.01" name="Q" id="Q" required>
+        </div>
+
+        <div>
+            <label for="L">Expected Years of Life Post-Transplant (L)</label>
+            <input type="number" step="0.1" name="L" id="L" required>
+        </div>
+
+        <div>
+            <label for="C">Critical Need Factor (C)</label>
+            <input type="number" step="0.1" name="C" id="C" value="1.0">
+        </div>
+
+        <div class="full-width">
+            <button type="submit">Calculate Score</button>
+        </div>
+
+    </form>
+
+    {% if score is not none %}
+    <div class="score-box">
+        <h2>Your Weeraratne-Ricks Score:</h2>
+        <p style="font-size: 24px; font-weight: bold;">{{ score }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
